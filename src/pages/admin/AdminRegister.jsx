@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
 import { auth } from "../../config/firebase";
 import { toast } from "react-toastify";
 import { LoaderCircle } from "lucide-react";
+import { AdminContext } from "./AdminLayout";
 
 export default function AdminRegister() {
   const navigate = useNavigate();
@@ -55,20 +56,24 @@ export default function AdminRegister() {
     }
   };
 
+  const stateContext = useContext(AdminContext);
+
   // route protection
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
+    if (!stateContext.loading) {
+      if (stateContext.userLogin) {
         navigate("/admin");
       }
-    });
+    }
+  }, [navigate, stateContext]);
 
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate]);
+  if (stateContext.loading) {
+    return (
+      <>
+        <div>Loading...</div>
+      </>
+    );
+  }
 
   return (
     <>

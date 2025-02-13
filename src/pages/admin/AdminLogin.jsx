@@ -3,11 +3,12 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../config/firebase";
 import { Eye, EyeClosed, LoaderCircle } from "lucide-react";
+import { AdminContext } from "./AdminLayout";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -52,25 +53,34 @@ export default function AdminLogin() {
       setLoading(false);
     }
   };
+  const stateContext = useContext(AdminContext);
 
   // route protection
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
+    if (!stateContext.loading) {
+      if (stateContext.userLogin) {
         navigate("/admin");
       }
-    });
+    }
+  }, [navigate, stateContext]);
 
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate]);
+  if (stateContext.loading) {
+    return (
+      <>
+        <div>Loading...</div>
+      </>
+    );
+  }
 
   return (
     <>
-      <div className="flex h-full">
+      <div
+        className={
+          (stateContext.theme
+            ? "bg-white text-black"
+            : "bg-gray-900 text-white") + " flex h-full"
+        }
+      >
         <div className="w-3/5 flex flex-col items-center gap-5 justify-center">
           <div className="flex flex-col items-center">
             <img src="/boxboxlogo.png" alt="" className="w-12 h-12" />
@@ -85,7 +95,7 @@ export default function AdminLogin() {
             <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="text-black text-sm tracking-tight font-semibold"
+                className="text-sm tracking-tight font-semibold"
               >
                 Email
               </label>
@@ -95,13 +105,16 @@ export default function AdminLogin() {
                 id="email"
                 type="text"
                 placeholder="Email"
-                className="w-full px-4 py-2 rounded-md border border-black"
+                className={
+                  (stateContext.theme ? "border-black" : "border-gray-300") +
+                  " w-full px-4 py-2 rounded-md border"
+                }
               />
             </div>
             <div className="space-y-2">
               <label
                 htmlFor="password"
-                className="text-black text-sm tracking-tight font-semibold"
+                className="text-sm tracking-tight font-semibold"
               >
                 Password
               </label>
@@ -122,13 +135,21 @@ export default function AdminLogin() {
                   id="password"
                   type={isShowPass ? "text" : "password"}
                   placeholder="Password"
-                  className="w-full px-4 py-2 rounded-md border border-black"
+                  className={
+                    (stateContext.theme ? "border-black" : "border-gray-300") +
+                    " w-full px-4 py-2 rounded-md border"
+                  }
                 />
               </div>
             </div>
             <button
               type="submit"
-              className="px-4 py-2 bg-black rounded-md w-full text-white flex justify-center items-center"
+              className={
+                (stateContext.theme
+                  ? "bg-black text-white"
+                  : "bg-white text-black") +
+                " px-4 py-2 rounded-md w-full flex justify-center items-center"
+              }
             >
               {loading && <LoaderCircle className="animate-spin" />}
               {!loading && <p>Sign In</p>}

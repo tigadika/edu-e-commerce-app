@@ -1,26 +1,17 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { AdminContext } from "./AdminLayout";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const stateContext = useContext(AdminContext);
 
   // route protection
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        console.log(uid);
-      } else {
-        console.log("tidak ada user login");
-        navigate("/admin/login");
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
+    if (!stateContext.userLogin) {
+      navigate("/admin/login");
+    }
   }, [navigate]);
 
   return (

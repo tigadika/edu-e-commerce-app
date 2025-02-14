@@ -1,24 +1,27 @@
+import { deleteDoc, doc } from "firebase/firestore";
 import { PencilIcon, Trash } from "lucide-react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { db } from "../../config/firebase";
+import { toast } from "react-toastify";
 
-export default function ProductRow({ product }) {
+export default function ProductRow({ product, index, handleDelete }) {
   const navigate = useNavigate();
 
   return (
-    <tr key={product.id} className="hover:bg-gray-50 transition-colors">
+    <tr className="hover:bg-gray-50 transition-colors">
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-        {product.id}
+        {index + 1}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
         {product.name}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        ${product.price.toFixed(2)}
+        Rp {product.price}
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <img
-          src={product.image || "/placeholder.svg"}
+          src={product.imageUrl}
           alt={product.name}
           width={50}
           height={50}
@@ -37,7 +40,12 @@ export default function ProductRow({ product }) {
         >
           <PencilIcon size={16} />
         </button>
-        <button className="cursor-pointer rounded-lg border border-gray-300 p-1 hover:bg-red-400 hover:text-white">
+        <button
+          onClick={() => {
+            handleDelete(product.id);
+          }}
+          className="cursor-pointer rounded-lg border border-gray-300 p-1 hover:bg-red-400 hover:text-white"
+        >
           <Trash size={16} />
         </button>
       </td>

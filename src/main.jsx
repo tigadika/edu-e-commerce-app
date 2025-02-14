@@ -8,6 +8,8 @@ import AdminLayout from "./pages/admin/AdminLayout.jsx";
 import AdminLogin from "./pages/admin/AdminLogin.jsx";
 import AdminRegister from "./pages/admin/AdminRegister.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
+import AddProduct from "./pages/admin/AddProduct.jsx";
+import EditProduct from "./pages/admin/EditProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Dashboard />,
+      },
+      {
+        path: "add-product",
+        element: <AddProduct />,
+      },
+      {
+        path: "edit-product/:id",
+        element: <EditProduct />,
       },
       {
         path: "login",

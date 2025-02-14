@@ -69,9 +69,9 @@ export default function AdminRegister() {
 
   if (stateContext.loading) {
     return (
-      <>
-        <div>Loading...</div>
-      </>
+      <div className="h-full w-full flex items-center justify-center">
+        <LoaderCircle size={30} className="animate-spin" />
+      </div>
     );
   }
 

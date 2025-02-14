@@ -24,10 +24,15 @@ export default function AdminNavbar() {
   return (
     <>
       <div className="fixed w-screen bg-black text-white h-16 z-40">
-        <div className="flex items-center justify-between xl:px-40 md:px-18 px-4 h-full">
-          <div className="cursor-pointer">
+        <div className="flex items-center justify-between px-10 h-full">
+          <div className="cursor-pointer flex items-center gap-2">
             <Link to={"/"}>
               <img src="/boxboxlogo.png" alt="" className="w-14 border-white" />
+            </Link>
+            <Link to={"/admin"}>
+              <h1 className="text-white text-2xl tracking-tighter uppercase">
+                CMS
+              </h1>
             </Link>
           </div>
           {/* login register */}

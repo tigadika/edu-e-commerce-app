@@ -3,6 +3,7 @@ import AdminNavbar from "../../components/admin/AdminNavbar";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import AdminSidebar from "../../components/admin/AdminSidebar";
 
 export const AdminContext = createContext(null);
 
@@ -38,8 +39,11 @@ export default function AdminLayout() {
     <>
       <AdminContext.Provider value={{ theme, changeTheme, userLogin, loading }}>
         <AdminNavbar />
-        <div className="h-[100vh] pt-15">
-          <Outlet />
+        <div className="h-[100vh] pt-15 flex">
+          {!loading && userLogin && <AdminSidebar />}
+          <div className={(userLogin ? "pl-[200px] " : " ") + "flex-grow"}>
+            <Outlet />
+          </div>
         </div>
         <ToastContainer />
       </AdminContext.Provider>

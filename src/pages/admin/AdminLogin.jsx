@@ -2,11 +2,12 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { auth } from "../../config/firebase";
+import { auth, provider } from "../../config/firebase";
 import { Eye, EyeClosed, LoaderCircle } from "lucide-react";
 import { AdminContext } from "./AdminLayout";
 
@@ -53,6 +54,17 @@ export default function AdminLogin() {
       setLoading(false);
     }
   };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const stateContext = useContext(AdminContext);
 
   // route protection
@@ -162,6 +174,12 @@ export default function AdminLogin() {
               here
             </p>
           </form>
+          <button
+            onClick={handleGoogleLogin}
+            className="w-1/2 py-2 flex items-center justify-center bg-black rounded-lg text-white cursor-pointer"
+          >
+            Sign In with Google
+          </button>
         </div>
         <div className="flex-grow p-4">
           <img

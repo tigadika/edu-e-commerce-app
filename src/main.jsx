@@ -10,6 +10,8 @@ import AdminRegister from "./pages/admin/AdminRegister.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
 import AddProduct from "./pages/admin/AddProduct.jsx";
 import EditProduct from "./pages/admin/EditProduct.jsx";
+import { Provider } from "react-redux";
+import store from "./store/index.js";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
   // </StrictMode>
 );

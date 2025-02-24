@@ -21,6 +21,7 @@ export const appSlice = createSlice({
     loginUser: {},
     isLoading: true,
     error: "",
+    loginUserRole: "",
   },
   reducers: {
     increment: (state) => {
@@ -47,6 +48,9 @@ export const appSlice = createSlice({
     onFetchProductByIdSuccess: (state, action) => {
       state.productById = action.payload;
     },
+    onFetchUserRoleSuccess: (state, action) => {
+      state.loginUserRole = action.payload;
+    },
   },
 });
 
@@ -60,14 +64,19 @@ export const {
   onLoading,
   onError,
   onFetchUserSuccess,
+  onFetchUserRoleSuccess,
 } = appSlice.actions;
 
 export const getUserProfileThunk = () => async (dispatch) => {
   dispatch(onLoading(true));
   try {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
+        const role = await getDoc(doc(db, "users", user.uid));
+
+        dispatch(onFetchUserRoleSuccess(role.data().role));
         dispatch(onFetchUserSuccess({ email: user.email }));
       } else {
         dispatch(onFetchUserSuccess(null));
@@ -82,6 +91,7 @@ export const getUserProfileThunk = () => async (dispatch) => {
 
 export const getProductsThunk = () => async (dispatch) => {
   dispatch(onLoading(true));
+
   try {
     const querySnapshot = await getDocs(collection(db, "products"));
 
@@ -127,6 +137,7 @@ export const addProductThunk = (input) => async (dispatch) => {
   dispatch(onLoading(true));
   try {
     const docRef = await addDoc(collection(db, "products"), input);
+    dispatch(getProductsThunk());
     toast.success("Success add item id" + docRef.id);
   } catch (error) {
     console.log(error);

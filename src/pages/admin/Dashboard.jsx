@@ -1,33 +1,33 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdminContext } from "./AdminLayout";
 import ProductTable from "../../components/admin/ProductTable";
 import { LoaderCircle } from "lucide-react";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
-import { db } from "../../config/firebase";
-import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsThunk } from "../../store/appSlice";
+import { AuthContext } from "../Auth";
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const stateContext = useContext(AdminContext);
+  const { loginUser, isLoading, loginUserRole } = useContext(AuthContext);
   const { products } = useSelector((state) => state.app);
   const dispatch = useDispatch();
-  const [data, setData] = useState(null);
 
   // route protection
   useEffect(() => {
-    setData("testing");
-    if (!stateContext.loginUser) {
-      navigate("/admin/login");
-    } else {
-      dispatch(getProductsThunk());
+    if (!isLoading) {
+      if (!loginUser?.email) {
+        navigate("/admin/login");
+      } else {
+        if (loginUserRole == "customer") {
+          navigate("/");
+        }
+        dispatch(getProductsThunk());
+      }
     }
-  }, [navigate]);
+  }, [navigate, loginUser]);
 
-  if (stateContext.isLoading) {
+  if (isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <LoaderCircle size={30} className="animate-spin" />

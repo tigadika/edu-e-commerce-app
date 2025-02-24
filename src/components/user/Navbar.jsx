@@ -1,7 +1,7 @@
 import { signInWithPopup, signOut } from "firebase/auth";
 import { ShoppingCart } from "lucide-react";
 import { auth, provider } from "../../config/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { Link as LinkRouter } from "react-router-dom";
@@ -53,14 +53,12 @@ export default function Navbar() {
         </div>
         {/* login register */}
         <div className="flex items-center gap-5">
-          <div>Product Count: {products.length}</div>
-          {!isLoading && loginUser.email && (
+          {!isLoading && loginUser?.email && (
             <>
               <button className="cursor-pointer">
                 <ShoppingCart />
               </button>
-              <p>Hi, {loginUser.email}!</p>
-              <LinkRouter to={"/admin"}>Ke admin</LinkRouter>
+              <p>Hi, {loginUser?.email}!</p>
               <button
                 onClick={handleLogout}
                 className="bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"
@@ -70,13 +68,21 @@ export default function Navbar() {
             </>
           )}
 
-          {!loginUser.email && (
-            <button
-              onClick={handleGoogleLoginInUserPlatform}
-              className="bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"
-            >
-              Login by google
-            </button>
+          {!loginUser?.email && (
+            <>
+              <Link
+                to={"/login"}
+                className="cursor-pointer tracking-tight font-semibold hover:text-gray-300"
+              >
+                Sign In
+              </Link>
+              <Link
+                to={"/register"}
+                className="cursor-pointer bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"
+              >
+                Sign Up
+              </Link>
+            </>
           )}
         </div>
       </div>

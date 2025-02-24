@@ -3,18 +3,18 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { toast } from "react-toastify";
-import { AdminContext } from "../../pages/admin/AdminLayout";
 import { Moon, Sun } from "lucide-react";
+import { AuthContext } from "../../pages/Auth";
 
 export default function AdminNavbar() {
   const navigate = useNavigate();
   // context
-  const stateContext = useContext(AdminContext);
+  const { theme, loginUser, changeTheme } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate("/admin/login");
+      navigate("/login");
       toast.success("Logout successfully");
     } catch (error) {
       console.log(error);
@@ -37,25 +37,25 @@ export default function AdminNavbar() {
           </div>
           {/* login register */}
           <div className="flex items-center gap-5">
-            {!stateContext.userLogin && (
+            {!loginUser?.email && (
               <>
                 <Link
-                  to={"/admin/login"}
+                  to={"/login"}
                   className="cursor-pointer tracking-tight font-semibold hover:text-gray-300"
                 >
                   Sign In
                 </Link>
                 <Link
-                  to={"/admin/register"}
+                  to={"/register"}
                   className="cursor-pointer bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"
                 >
                   Sign Up
                 </Link>
               </>
             )}
-            {stateContext.userLogin && (
+            {loginUser?.email && (
               <>
-                <p>Hi, {stateContext.userLogin.email}</p>
+                <p>Hi, {loginUser?.email}</p>
                 <button
                   onClick={handleLogout}
                   className="cursor-pointer bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"
@@ -64,17 +64,9 @@ export default function AdminNavbar() {
                 </button>
               </>
             )}
-            {stateContext.theme && (
-              <Sun
-                className="cursor-pointer"
-                onClick={stateContext.changeTheme}
-              />
-            )}
-            {!stateContext.theme && (
-              <Moon
-                className="cursor-pointer"
-                onClick={stateContext.changeTheme}
-              />
+            {theme && <Sun className="cursor-pointer" onClick={changeTheme} />}
+            {!theme && (
+              <Moon className="cursor-pointer" onClick={changeTheme} />
             )}
           </div>
         </div>

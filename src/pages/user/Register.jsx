@@ -5,19 +5,25 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { toast } from "react-toastify";
 import { LoaderCircle } from "lucide-react";
-import { AdminContext } from "./AdminLayout";
+import { AdminContext } from "../admin/AdminLayout";
+import { doc, setDoc } from "firebase/firestore";
+import { AuthContext } from "../Auth";
 
-export default function AdminRegister() {
+export default function Register() {
   const [input, setInput] = useState({
     email: "",
     password: "",
+    firstName: "",
+    lastName: "",
   });
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const { loginUser, isLoading, theme } = useContext(AuthContext);
 
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
@@ -34,7 +40,15 @@ export default function AdminRegister() {
         input.email,
         input.password
       );
-      navigate("/admin/login");
+      if (userCredential.user.uid) {
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          email: input.email,
+          firstName: input.firstName,
+          lastName: input.lastName,
+          role: "customer",
+        });
+      }
+      navigate("/login");
       toast.success("Register success");
     } catch (error) {
       switch (error.message) {
@@ -56,18 +70,16 @@ export default function AdminRegister() {
     }
   };
 
-  const stateContext = useContext(AdminContext);
-
   // route protection
   useEffect(() => {
-    if (!stateContext.isLoading) {
-      if (stateContext.loginUser) {
+    if (!isLoading) {
+      if (loginUser?.email) {
         navigate("/admin");
       }
     }
-  }, [navigate, stateContext]);
+  }, [navigate]);
 
-  if (stateContext.isLoading) {
+  if (isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <LoaderCircle size={30} className="animate-spin" />
@@ -77,7 +89,7 @@ export default function AdminRegister() {
 
   return (
     <>
-      <div className="flex h-full">
+      <div className="flex h-screen">
         <div className="flex-grow p-4">
           <img
             src="/banner-login.jpeg"
@@ -99,6 +111,40 @@ export default function AdminRegister() {
             onSubmit={handleSubmitRegister}
             className="w-full px-10 space-y-5"
           >
+            <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-2">
+                <label
+                  htmlFor="firstName"
+                  className="text-black text-sm tracking-tight font-semibold"
+                >
+                  First Name
+                </label>
+                <input
+                  onChange={handleChangeInput}
+                  name="firstName"
+                  id="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  className="w-full px-4 py-2 rounded-md border border-black"
+                />
+              </div>
+              <div className="space-y-2">
+                <label
+                  htmlFor="lastName"
+                  className="text-black text-sm tracking-tight font-semibold"
+                >
+                  Last Name
+                </label>
+                <input
+                  onChange={handleChangeInput}
+                  name="lastName"
+                  id="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full px-4 py-2 rounded-md border border-black"
+                />
+              </div>
+            </div>
             <div className="space-y-2">
               <label
                 htmlFor="email"
@@ -140,7 +186,7 @@ export default function AdminRegister() {
             </button>
             <p>
               Already have an account?{" "}
-              <Link to={"/admin/login"} className="underline">
+              <Link to={"/login"} className="underline">
                 Login
               </Link>{" "}
               here

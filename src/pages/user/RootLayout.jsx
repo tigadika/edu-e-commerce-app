@@ -17,7 +17,7 @@ export default function RootLayout() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen lg:mx-40 md:mx-18 mx-4">
+      <div className="min-h-screen pt-18">
         <Outlet />
       </div>
       <Footer />

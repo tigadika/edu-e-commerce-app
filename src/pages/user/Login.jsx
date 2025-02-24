@@ -1,18 +1,13 @@
-import {
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { auth, provider } from "../../config/firebase";
+import { auth, db, provider } from "../../config/firebase";
 import { Eye, EyeClosed, LoaderCircle } from "lucide-react";
-import { AdminContext } from "./AdminLayout";
-import { useSelector } from "react-redux";
+import { AuthContext } from "../Auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
-export default function AdminLogin() {
+export default function Login() {
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
@@ -22,7 +17,7 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const [isShowPass, setIsShowPass] = useState(false);
 
-  const { loginUser, isLoading } = useSelector((state) => state.app);
+  const { loginUser, isLoading, theme } = useContext(AuthContext);
 
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
@@ -34,12 +29,14 @@ export default function AdminLogin() {
     event.preventDefault();
     setLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        input.email,
-        input.password
-      );
-      navigate("/admin");
+      await signInWithEmailAndPassword(auth, input.email, input.password);
+
+      const user = await getDoc(doc(db, "users", user.uid));
+      if (user.data().role === "customer") {
+        navigate("/");
+      } else {
+        navigate("/admin");
+      }
       toast.success("Login success");
     } catch (error) {
       switch (error.message) {
@@ -62,24 +59,36 @@ export default function AdminLogin() {
     try {
       const result = await signInWithPopup(auth, provider);
 
-      console.log(result);
+      // kita check dulu di db, kalau udah ada pake yg udah ada
+      // kalau belum kita buat baru
+      const user = await getDoc(doc(db, "users", result.user.uid));
+
+      if (!user.data()) {
+        if (result.user.uid) {
+          await setDoc(doc(db, "users", result.user.uid), {
+            email: result.user.email,
+            firstName: result.user.displayName.split(" ")[0],
+            lastName: result.user.displayName.split(" ")[1],
+            role: "customer",
+          });
+        }
+      }
+      console.log(result, "<<<<");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const stateContext = useContext(AdminContext);
-
   // route protection
   useEffect(() => {
-    if (!stateContext.isLoading) {
-      if (stateContext.loginUser.email) {
+    if (!isLoading) {
+      if (loginUser?.email) {
         navigate("/admin");
       }
     }
-  }, [navigate, stateContext]);
+  }, [navigate, loginUser]);
 
-  if (stateContext.isLoading) {
+  if (isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <LoaderCircle size={30} className="animate-spin" />
@@ -91,12 +100,11 @@ export default function AdminLogin() {
     <>
       <div
         className={
-          (stateContext.theme
-            ? "bg-white text-black"
-            : "bg-gray-900 text-white") + " flex h-full"
+          (theme ? "bg-white text-black" : "bg-gray-900 text-white") +
+          " flex h-screen"
         }
       >
-        <div className="w-3/5 flex flex-col items-center gap-5 justify-center">
+        <div className="w-full flex flex-col items-center gap-5 justify-center">
           <div className="flex flex-col items-center">
             <img src="/boxboxlogo.png" alt="" className="w-12 h-12" />
             <h1 className="text-2xl tracking-tight font-bold">
@@ -121,7 +129,7 @@ export default function AdminLogin() {
                 type="text"
                 placeholder="Email"
                 className={
-                  (stateContext.theme ? "border-black" : "border-gray-300") +
+                  (theme ? "border-black" : "border-gray-300") +
                   " w-full px-4 py-2 rounded-md border"
                 }
               />
@@ -151,7 +159,7 @@ export default function AdminLogin() {
                   type={isShowPass ? "text" : "password"}
                   placeholder="Password"
                   className={
-                    (stateContext.theme ? "border-black" : "border-gray-300") +
+                    (theme ? "border-black" : "border-gray-300") +
                     " w-full px-4 py-2 rounded-md border"
                   }
                 />
@@ -160,9 +168,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               className={
-                (stateContext.theme
-                  ? "bg-black text-white"
-                  : "bg-white text-black") +
+                (theme ? "bg-black text-white" : "bg-white text-black") +
                 " px-4 py-2 rounded-md w-full flex justify-center items-center"
               }
             >
@@ -171,7 +177,7 @@ export default function AdminLogin() {
             </button>
             <p>
               Don't have an account?{" "}
-              <Link to={"/admin/register"} className="underline">
+              <Link to={"/register"} className="underline">
                 Register
               </Link>{" "}
               here

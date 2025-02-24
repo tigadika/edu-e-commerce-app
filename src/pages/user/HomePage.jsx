@@ -14,7 +14,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="space-y-20 py-20">
+      <div className="space-y-20 py-20 px-40">
         <img src="/banner1.webp" alt="" className="w-full" />
         <div className="space-y-4">
           <div className="flex justify-end items-center gap-2">
@@ -46,7 +46,7 @@ export default function HomePage() {
               <ArrowDown size={12} />
             </button>
           </div>
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-5 gap-5">
             {products &&
               products.map((product) => (
                 <CardItem key={product.id} product={product} />

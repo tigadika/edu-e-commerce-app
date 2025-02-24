@@ -1,14 +1,15 @@
 import { signInWithPopup, signOut } from "firebase/auth";
 import { ShoppingCart } from "lucide-react";
-import React, { useContext } from "react";
 import { auth, provider } from "../../config/firebase";
-import { UserContext } from "../../pages/user/RootLayout";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { Link as LinkRouter } from "react-router-dom";
 
 export default function Navbar() {
+  const { loginUser, isLoading, products } = useSelector((state) => state.app);
   const navigate = useNavigate();
+
   const handleGoogleLoginInUserPlatform = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -28,10 +29,6 @@ export default function Navbar() {
       console.log(error);
     }
   };
-
-  const { userLogin, loading } = useContext(UserContext);
-
-  const { products } = useSelector((state) => state.app);
 
   return (
     <div className="fixed w-screen bg-black text-white h-16 z-40">
@@ -57,12 +54,13 @@ export default function Navbar() {
         {/* login register */}
         <div className="flex items-center gap-5">
           <div>Product Count: {products.length}</div>
-          {!loading && userLogin && (
+          {!isLoading && loginUser.email && (
             <>
               <button className="cursor-pointer">
                 <ShoppingCart />
               </button>
-              <p>Hi, {userLogin}!</p>
+              <p>Hi, {loginUser.email}!</p>
+              <LinkRouter to={"/admin"}>Ke admin</LinkRouter>
               <button
                 onClick={handleLogout}
                 className="bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"
@@ -72,7 +70,7 @@ export default function Navbar() {
             </>
           )}
 
-          {!userLogin && (
+          {!loginUser.email && (
             <button
               onClick={handleGoogleLoginInUserPlatform}
               className="bg-white rounded-md px-4 py-2 text-black tracking-tight font-semibold hover:bg-gray-300"

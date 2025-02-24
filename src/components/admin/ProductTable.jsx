@@ -38,7 +38,7 @@ import ProductRow from "./ProductRow";
 //   },
 // ];
 
-export default function ProductTable({ products, handleDelete }) {
+export default function ProductTable({ products }) {
   return (
     <>
       <div className="w-full overflow-x-auto border border-gray-300 rounded-lg">
@@ -67,12 +67,7 @@ export default function ProductTable({ products, handleDelete }) {
           </thead>
           <tbody className="divide-y divide-gray-200">
             {products.map((product, i) => (
-              <ProductRow
-                key={i}
-                product={product}
-                index={i}
-                handleDelete={handleDelete}
-              />
+              <ProductRow key={i} product={product} index={i} />
             ))}
           </tbody>
         </table>

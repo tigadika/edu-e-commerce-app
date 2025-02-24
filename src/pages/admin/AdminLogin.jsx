@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { auth, provider } from "../../config/firebase";
 import { Eye, EyeClosed, LoaderCircle } from "lucide-react";
 import { AdminContext } from "./AdminLayout";
+import { useSelector } from "react-redux";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -20,6 +21,8 @@ export default function AdminLogin() {
   });
   const [loading, setLoading] = useState(false);
   const [isShowPass, setIsShowPass] = useState(false);
+
+  const { loginUser, isLoading } = useSelector((state) => state.app);
 
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
@@ -69,14 +72,14 @@ export default function AdminLogin() {
 
   // route protection
   useEffect(() => {
-    if (!stateContext.loading) {
-      if (stateContext.userLogin) {
+    if (!stateContext.isLoading) {
+      if (stateContext.loginUser.email) {
         navigate("/admin");
       }
     }
   }, [navigate, stateContext]);
 
-  if (stateContext.loading) {
+  if (stateContext.isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <LoaderCircle size={30} className="animate-spin" />

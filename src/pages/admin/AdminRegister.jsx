@@ -11,13 +11,13 @@ import { LoaderCircle } from "lucide-react";
 import { AdminContext } from "./AdminLayout";
 
 export default function AdminRegister() {
-  const navigate = useNavigate();
-
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
@@ -60,14 +60,14 @@ export default function AdminRegister() {
 
   // route protection
   useEffect(() => {
-    if (!stateContext.loading) {
-      if (stateContext.userLogin) {
+    if (!stateContext.isLoading) {
+      if (stateContext.loginUser) {
         navigate("/admin");
       }
     }
   }, [navigate, stateContext]);
 
-  if (stateContext.loading) {
+  if (stateContext.isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <LoaderCircle size={30} className="animate-spin" />

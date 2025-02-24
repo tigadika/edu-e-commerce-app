@@ -4,13 +4,15 @@ import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AdminSidebar from "../../components/admin/AdminSidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfileThunk } from "../../store/appSlice";
 
 export const AdminContext = createContext(null);
 
 export default function AdminLayout() {
   const [theme, setTheme] = useState(true);
-  const [userLogin, setUserLogin] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { loginUser, isLoading } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
 
   const changeTheme = () => {
     setTheme(!theme);
@@ -18,30 +20,20 @@ export default function AdminLayout() {
 
   // ambil user
   useEffect(() => {
-    setLoading(true);
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserLogin(user);
-        setLoading(false);
-      } else {
-        setUserLogin(null);
-        setLoading(false);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
+    dispatch(getUserProfileThunk());
   }, []);
 
   return (
     <>
-      <AdminContext.Provider value={{ theme, changeTheme, userLogin, loading }}>
+      <AdminContext.Provider
+        value={{ theme, changeTheme, loginUser, isLoading }}
+      >
         <AdminNavbar />
         <div className="h-[100vh] pt-15 flex">
-          {!loading && userLogin && <AdminSidebar />}
-          <div className={(userLogin ? "pl-[200px] " : " ") + "flex-grow"}>
+          {!isLoading && loginUser.email && <AdminSidebar />}
+          <div
+            className={(loginUser.email ? "pl-[200px] " : " ") + "flex-grow"}
+          >
             <Outlet />
           </div>
         </div>

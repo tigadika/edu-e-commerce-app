@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductForm from "../../components/admin/ProductForm";
 import { useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductByIdThunk } from "../../store/appSlice";
 
 export default function EditProduct() {
   const { id } = useParams();
-
-  const [productById, setProductById] = useState(null);
-
-  const getProductById = async () => {
-    try {
-      const docSnap = await getDoc(doc(db, "products", id));
-
-      if (docSnap.exists()) {
-        // console.log("Document data:", docSnap.data());
-        setProductById(docSnap.data());
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { productById } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (id) {
-      getProductById();
+      dispatch(getProductByIdThunk(id));
     }
   }, [id]);
 

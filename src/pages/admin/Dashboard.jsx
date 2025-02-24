@@ -7,48 +7,27 @@ import { LoaderCircle } from "lucide-react";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsThunk } from "../../store/appSlice";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const stateContext = useContext(AdminContext);
-  const [products, setProducts] = useState([]);
-
-  const getProducts = async () => {
-    try {
-      const querySnapshot = await getDocs(collection(db, "products"));
-
-      let data = [];
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        data.push({ id: doc.id, ...doc.data() });
-      });
-
-      setProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleDelete = async (productId) => {
-    try {
-      await deleteDoc(doc(db, "products", productId));
-      getProducts();
-      toast.success("Success delete");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { products } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+  const [data, setData] = useState(null);
 
   // route protection
   useEffect(() => {
-    if (!stateContext.userLogin) {
+    setData("testing");
+    if (!stateContext.loginUser) {
       navigate("/admin/login");
     } else {
-      getProducts();
+      dispatch(getProductsThunk());
     }
   }, [navigate]);
 
-  if (stateContext.loading) {
+  if (stateContext.isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <LoaderCircle size={30} className="animate-spin" />
@@ -75,7 +54,7 @@ export default function Dashboard() {
               </select>
             </div>
           </div>
-          <ProductTable products={products} handleDelete={handleDelete} />
+          <ProductTable products={products} />
         </div>
       </div>
     </>

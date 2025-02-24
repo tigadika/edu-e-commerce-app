@@ -4,9 +4,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../config/firebase";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { deleteProductByIdThunk } from "../../store/appSlice";
 
-export default function ProductRow({ product, index, handleDelete }) {
+export default function ProductRow({ product, index }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <tr className="hover:bg-gray-50 transition-colors">
@@ -42,7 +45,7 @@ export default function ProductRow({ product, index, handleDelete }) {
         </button>
         <button
           onClick={() => {
-            handleDelete(product.id);
+            dispatch(deleteProductByIdThunk(product.id));
           }}
           className="cursor-pointer rounded-lg border border-gray-300 p-1 hover:bg-red-400 hover:text-white"
         >

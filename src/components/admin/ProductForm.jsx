@@ -4,9 +4,10 @@ import { toast } from "react-toastify";
 import { db } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import { LoaderCircle } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { addProductThunk, editProductByIdThunk } from "../../store/appSlice";
 
 export default function ProductForm({ productById, productId }) {
-  const navigate = useNavigate();
   const [input, setInput] = useState({
     name: "",
     description: "",
@@ -14,6 +15,9 @@ export default function ProductForm({ productById, productId }) {
     imageUrl: "",
   });
   const [isLoadingForm, setIsLoadingForm] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const changeInput = (event) => {
     const { value, name } = event.target;
@@ -23,23 +27,12 @@ export default function ProductForm({ productById, productId }) {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     setIsLoadingForm(true);
-    try {
-      if (productId) {
-        await updateDoc(doc(db, "products", productId), input);
-
-        toast.success("Success edit item" + productId);
-      } else {
-        const docRef = await addDoc(collection(db, "products"), input);
-        toast.success("Success add item id" + docRef.id);
-      }
-
-      navigate("/admin");
-    } catch (error) {
-      console.log(error);
-      toast.error("Error products");
-    } finally {
-      setIsLoadingForm(false);
+    if (productById) {
+      dispatch(editProductByIdThunk({ input, productId }));
+    } else {
+      dispatch(addProductThunk(input));
     }
+    navigate("/admin");
   };
 
   useEffect(() => {

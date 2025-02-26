@@ -6,7 +6,10 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
+  query,
   updateDoc,
+  where,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -89,11 +92,21 @@ export const getUserProfileThunk = () => async (dispatch) => {
   }
 };
 
-export const getProductsThunk = () => async (dispatch) => {
+export const getProductsThunk = (params) => async (dispatch) => {
   dispatch(onLoading(true));
 
   try {
-    const querySnapshot = await getDocs(collection(db, "products"));
+    let q = collection(db, "products");
+
+    if (params?.filterCategory) {
+      q = query(q, where("category", "==", params.filterCategory));
+    }
+
+    if (params?.sortPrice) {
+      q = query(q, orderBy("price", params.sortPrice));
+    }
+
+    const querySnapshot = await getDocs(q);
 
     let data = [];
     querySnapshot.forEach((doc) => {
@@ -102,6 +115,8 @@ export const getProductsThunk = () => async (dispatch) => {
 
     dispatch(onFetchProductSuccess(data));
   } catch (error) {
+    console.log(error, "<<<<");
+
     dispatch(onError(error));
   } finally {
     dispatch(onLoading(false));

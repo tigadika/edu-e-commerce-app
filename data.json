@@ -1,0 +1,344 @@
+[
+  {
+    "name": "iPhone 15 Pro Max",
+    "description": "iPhone 15 Pro Max. Lahir dari titanium dan dilengkapi chip A17 Pro terobosan, tombol Tindakan yang dapat disesuaikan, dan sistem kamera iPhone paling andal yang pernah ada.",
+    "price": 22000000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_iphone_15_pro_max_natural_titanium_1_1_5.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 15 Pro",
+    "description": "iPhone 15 Pro. Lahir dari titanium dan dilengkapi chip A17 Pro terobosan, tombol Tindakan yang dapat disesuaikan, dan sistem kamera iPhone paling andal yang pernah ada.",
+    "price": 18999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_iphone_15_pro_natural_titanium_1_6.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 15",
+    "description": "iPhone 15 menghadirkan Dynamic Island, kamera Utama 48 MP, dan USB-C — semuanya dalam desain aluminium dan kaca berwarna yang tangguh.",
+    "price": 13999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_iphone_15_blue_1_5.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 14 Pro Max",
+    "description": "iPhone 14 Pro Max. Memotret detail menakjubkan dengan kamera Utama 48 MP. Nikmati iPhone dalam cara yang sepenuhnya baru dengan layar yang Selalu Aktif dan Dynamic Island. Deteksi Tabrakan, sebuah fitur keselamatan baru, memanggil bantuan saat Anda tak bisa.",
+    "price": 17999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_14_pro_max_deep_purple_1_6.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 14 Pro",
+    "description": "iPhone 14 Pro. Memotret detail menakjubkan dengan kamera Utama 48 MP. Nikmati iPhone dalam cara yang sepenuhnya baru dengan layar yang Selalu Aktif dan Dynamic Island. Deteksi Tabrakan, sebuah fitur keselamatan baru, memanggil bantuan saat Anda tak bisa.",
+    "price": 16999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_14_pro_deep_purple_1_6.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 14",
+    "description": "iPhone 14. Dengan sistem kamera ganda paling hebat di iPhone. Ambil foto yang memukau dalam pencahayaan rendah maupun terang. Deteksi Tabrakan,1 sebuah fitur keselamatan baru, memanggil bantuan saat Anda tak bisa.",
+    "price": 11999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_14_blue_1_3_1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 13",
+    "description": "iPhone 13. Sistem kamera ganda paling canggih yang pernah ada di iPhone. Chip A15 Bionic yang secepat kilat. Lompatan besar dalam kekuatan baterai. Desain kokoh. Dan layar Super Retina XDR yang lebih cerah.",
+    "price": 9999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_13_pink_1_3.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 12",
+    "description": "iPhone 12. Layar Super Retina XDR 6,1 inci yang begitu cerah.1 Ceramic Shield dengan ketahanan jatuh empat kali lebih baik.2 Fotografi pencahayaan rendah yang menakjubkan dengan mode Malam di semua kamera. Mampu merekam, mengedit, dan memutar video sekelas sinema dengan Dolby Vision. Chip A14 Bionic yang andal. Dan aksesori MagSafe baru untuk kemudahan pemasangan dan pengisian daya nirkabel yang lebih cepat.3 Saatnya bersenang-senang.",
+    "price": 8499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_12_purple_1_2_1_1.jpeg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone SE Generasi 3",
+    "description": "Chip A15 Bionic yang secepat kilat dan 5G cepat(1). Kekuatan baterai tahan lama dan kamera superstar. Selain itu, kaca paling kuat di ponsel pintar dan tombol Home dengan Touch ID yang aman.",
+    "price": 7999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_se_3_starlight_1_3_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPhone 11",
+    "description": "Sistem kamera ganda baru merekam lebih banyak lagi hal yang Anda lihat dan sukai. Chip paling cepat yang pernah ada di ponsel pintar dan kekuatan baterai sepanjang hari memungkinkan Anda melakukan lebih banyak hal tanpa perlu sering mengisi daya.",
+    "price": 6999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_iphone_11_black_new_1_7_3.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPad Pro Generasi 6",
+    "description": "iPad Pro. Dengan performa yang menakjubkan, konektivitas nirkabel super cepat, dan pengalaman Apple Pencil generasi berikutnya. Ditambah, fitur produktivitas dan kolaborasi baru yang andal di iPadOS 16. iPad Pro adalah pengalaman iPad terbaik.",
+    "price": 14799000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/ipad_pro_gen_4_11_inci_wi-fi_space_grey_1_6.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPad Pro Generasi 5",
+    "description": "iPad Pro dilengkapi dengan chip Apple M1 yang bertenaga untuk performa tingkat selanjutnya dan kekuatan baterai sepanjang hari.(3) Layar Liquid Retina XDR 12,9 inci yang menghanyutkan untuk melihat dan mengedit foto serta video.",
+    "price": 12799000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_ipad_pro_2021_12.9-inci_wi-fi_silver_1_2_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPad Air Generasi 5 10.9 inchi",
+    "description": "iPad Air dengan layar Liquid Retina 10,9 inci yang menghanyutkan. Terobosan chip Apple M1 menghadirkan performa yang lebih cepat, membuat iPad Air begitu bertenaga untuk berkreasi dan bermain game. Dilengkapi Touch ID, kamera canggih, nirkabel secepat kilat, USB-C, dan dukungan untuk Magic Keyboard dan Apple Pencil (generasi ke-2).",
+    "price": 10299000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/ipad_air_gen_5_10_9_inci_wi-fi_purple_1_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPad Generasi 10",
+    "description": "Didesain ulang dengan penuh warna dan lebih serbaguna. Dengan desain layar sepenuhnya, layar Liquid Retina 10,9 inci, dan empat warna menawan. iPad menghadirkan cara yang andal untuk berkreasi, tetap terhubung, dan menyelesaikan berbagai hal.",
+    "price": 7799000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/p/ipad_gen_10_10_9_inci_wi-fi_blue_1_2_4.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPad Generasi 9",
+    "description": "Begitu bertenaga. Mudah digunakan. Serbaguna. iPad baru memiliki layar Retina 10,2 inci yang indah, chip A13 Bionic andal, kamera depan Ultra Wide dengan Center Stage, dan berfungsi dengan Apple Pencil dan Smart Keyboard. iPad memungkinkan Anda melakukan lebih banyak hal dengan mudah. Semuanya dengan harga luar biasa hemat.",
+    "price": 4999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/k/mk493paa0_2_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iPad Mini Generasi 6",
+    "description": "iPad mini baru. Menghadirkan desain layar sepenuhnya dengan layar Liquid Retina 8,3 inci. Chip A15 Bionic andal dengan Neural Engine. Kamera depan Ultra Wide 12 MP dengan Center Stage. Konektivitas USB-C. Dan nirkabel ultra cepat. Buat catatan, tandai dokumen, atau tuangkan ide terbesar Anda dengan Apple Pencil (generasi ke-2) yang dapat menempel secara magnetis dan mengisi daya secara nirkabel.",
+    "price": 9099000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/k/mk893paa0_2_1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Apple Watch Ultra 2",
+    "description": "Apple Watch paling tangguh dan andal. Dirancang untuk petualangan outdoor dan olahraga berat dengan casing titanium ringan, kekuatan baterai lebih lama,(1) dan layar paling terang yang pernah ada. Dengan gerakan ketuk dua kali,(2) sebuah cara istimewa untuk berinteraksi dengan Apple Watch.",
+    "price": 15999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_watch_ultra_2_49mm_gps_cellular_titanium_case_with_orange_ocean_band_1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Apple Watch Ultra",
+    "description": "Apple Watch paling tangguh dan andal yang pernah ada, dirancang untuk penjelajahan, petualangan, dan ketahanan. Dengan casing titanium 49 mm sekelas industri dirgantara, kekuatan baterai yang lebih lama, aplikasi khusus yang berfungsi dengan sensor canggih, dan tombol Tindakan baru yang dapat disesuaikan.",
+    "price": 13999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_watch_ultra_49mm_gps_cellular_titanium_case_with_yellow_ocean_band_1_1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Apple Watch Series 9",
+    "description": "Apple Watch Series 9 membantu Anda tetap terhubung, aktif, sehat, dan aman. Dilengkapi gerakan ketuk dua kali, sebuah cara istimewa untuk berinteraksi dengan Apple Watch,1 dan layar yang semakin terang.",
+    "price": 6499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_watch_series_9_45mm_gps_silver_aluminium_case_with_winter_blue_sport_loop_1_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Apple Watch SE Gen 2",
+    "description": "Fitur esensial untuk membantu Anda tetap terhubung, aktif, sehat, dan aman.",
+    "price": 3999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_watch_se_gps_silver_alumunium_strom_blue_sb_40mm_1_3.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Macbook Air M2 15 inch",
+    "description": "MacBook Air 15 inci luar biasa tipis dan dilengkapi layar Liquid Retina yang memukau. Bertenaga super berkat chip M2 — dan dengan kekuatan baterai hingga 18 jam (1) — MacBook Air ini menghadirkan performa luar biasa dalam desain yang ultra portabel.",
+    "price": 21999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/a/macbook_air_15_3_inci_m2_2023_starlight_1_4.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Macbook Air M2 13 inch",
+    "description": "Bertenaga super berkat chip M2 generasi berikutnya, MacBook Air yang didesain ulang menggabungkan performa andal dengan kekuatan baterai hingga 18 jam ke dalam penutup berbahan aluminium yang luar biasa tipis.",
+    "price": 18999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/a/macbook_air_m2_midnight_pdp_image_position-1__id_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Macbook Air M1 13 inch",
+    "description": "Laptop Apple yang paling tipis dan ringan, bertenaga super dengan chip Apple M1. Tuntaskan berbagai proyek Anda dengan CPU 8-core super cepat. Tingkatkan aplikasi dan game kaya grafis ke level lebih tinggi dengan GPU hingga 8-core. Dan percepat tugas pembelajaran mesin dengan Neural Engine 16-core.",
+    "price": 12499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/a/macbook_air_m1_space_gray_1_1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Macbook Pro M3 Pro 14 inch",
+    "description": "MacBook Pro 14 inci melesat berkat M3 Pro dan M3 Max, chip yang sepenuhnya canggih dan mendorong performa yang lebih besar untuk alur kerja yang lebih berat. Dengan kekuatan baterai terbaik di kelasnya — hingga 18 jam — dan layar Liquid Retina XDR menawan, ini adalah laptop profesional yang tak ada tandingannya. Kini dalam warna baru: Hitam Kosmik.",
+    "price": 36499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/a/macbook_pro_14-inch_m3_pro_max_space_black_1_5.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Macbook Pro M3 Pro 16 inch",
+    "description": "MacBook Pro 16 inci melesat berkat M3 Pro dan M3 Max, chip yang sepenuhnya canggih serta menghadirkan kemampuan dan performa masif untuk alur kerja paling ekstrem. Dengan kekuatan baterai terbaik di kelasnya — hingga 22 jam — dan layar Liquid Retina XDR menawan, ini adalah laptop profesional yang tak ada tandingannya. Kini dalam warna baru: Hitam Kosmik.    ",
+    "price": 44499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/a/macbook_pro_16-inch_m3_pro_max_space_black_1_5.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Macbook Pro M1 14 inch",
+    "description": "MacBook Pro baru menghasilkan performa luar biasa bagi pengguna pro. Pilih M1 Pro yang andal atau M1 Max yang lebih andal untuk memacu tahapan kerja level pro sekaligus mendapatkan kekuatan baterai yang luar biasa.(1) Dengan layar Liquid Retina XDR 14 inci yang memukau serta serangkaian port pro, Anda dapat melakukan lebih banyak hal dengan MacBook Pro.    ",
+    "price": 19999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/m/a/macbook_pro_2021_14_inch_space_grey_1_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iMac 24 inch M3 Dual Port",
+    "description": "iMac. Komputer desktop serba bisa terbaik di dunia, kini bertenaga super berkat chip M3. Dengan layar 24 inci yang mengagumkan dalam desain ikonik serta kamera, mikrofon, dan speaker terbaik di kelasnya. iMac sempurna untuk bermain dan bekerja.",
+    "price": 22499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/m/imac_24-inch_m3_2-port_blue_1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "iMac 24 inch M1 Dual Port",
+    "description": "Anda tak pernah melihat komputer seperti ini. Dengan desain luar biasa tipis berkat chip Apple M1. Layar Retina 4.5K 24 inci yang menghanyutkan dengan lebih dari satu miliar warna yang memberikan gambar besar dengan detail yang menakjubkan.",
+    "price": 20999000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/i/m/imac_24_inch_2_port_blue_1_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Airpods Max",
+    "description": "AirPods Max merancang ulang headphone over-ear. Driver yang didesain dinamis oleh Apple menghadirkan audio high-fidelity yang menghanyutkan. Setiap detailnya, mulai dari kanopi hingga bantalan, dirancang agar tepat untuk semua.",
+    "price": 9499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_airpods_max_space_grey_1_2.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Airpods Pro Generasi 2 (USB C)",
+    "description": "AirPods Pro dilengkapi Peredam Kebisingan Aktif hingga 2x lebih tinggi, mode Transparansi, dan kini Audio Adaptif, yang secara otomatis menyesuaikan kontrol kebisingan untuk Anda guna memberikan pengalaman mendengarkan terbaik di berbagai lingkungan dan interaksi di sepanjang hari.",
+    "price": 4299000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/p/apple_airpods_pro_generasi_ke-2_usb-c_2_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Airpods Gen 3 Magsafe",
+    "description": "Memperkenalkan AirPods yang sepenuhnya baru. Dilengkapi audio spasial yang menghadirkan suara yang mengelilingi Anda, EQ Adaptif yang secara otomatis mengatur musik sesuai telinga Anda, dan kekuatan baterai lebih lama. Tahan air dan keringat serta menghadirkan pengalaman yang menakjubkan.",
+    "price": 3499000,
+    "stock": 100,
+    "imgUrl": "https://cdn.eraspace.com/media/catalog/product/a/i/airpods_3rd_generation__1_1.jpg",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Sony PS5 Digital Edition",
+    "description": "Nikmati pengalaman gaming generasi berikutnya dengan PlayStation 5 Digital Edition. Dirancang untuk performa yang maksimal dan pengalaman bermain game yang imersif, PS5 Digital Edition menawarkan berbagai fitur canggih yang akan membawa Anda ke level berikutnya dalam dunia gaming.",
+    "price": 8900000,
+    "stock": 20,
+    "imgUrl": "https://images-cdn.ubuy.co.id/64463ea008e40f14c5413564-restored-sony-playstation-5-digital.jpg",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Sony PS5 Standard Edition",
+    "description": "Nikmati pengalaman gaming generasi berikutnya dengan PlayStation 5 Digital Edition. Dirancang untuk performa yang maksimal dan pengalaman bermain game yang imersif, PS5 Digital Edition menawarkan berbagai fitur canggih yang akan membawa Anda ke level berikutnya dalam dunia gaming.",
+    "price": 8500000,
+    "stock": 20,
+    "imgUrl": "https://www.maxgaming.com/bilder/artiklar/zoom/28753_1.jpg?m=1700745894",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Nintendo Switch",
+    "description": "Rasakan kebebasan bermain game dengan Nintendo Switch, konsol hibrida revolusioner yang memungkinkan Anda bermain kapan saja dan di mana saja. Dengan desain yang fleksibel dan fitur-fitur canggih, Nintendo Switch menawarkan pengalaman bermain game yang serbaguna dan menyenangkan, baik di rumah maupun di perjalanan.",
+    "price": 3999000,
+    "stock": 20,
+    "imgUrl": "https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/ncom/en_US/products/hardware/nintendo-switch-red-blue/110478-nintendo-switch-neon-blue-neon-red-front-screen-on-1200x675",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Nintendo Switch OLED",
+    "description": "Rasakan kebebasan bermain game dengan Nintendo Switch, konsol hibrida revolusioner yang memungkinkan Anda bermain kapan saja dan di mana saja. Dengan desain yang fleksibel dan fitur-fitur canggih, Nintendo Switch menawarkan pengalaman bermain game yang serbaguna dan menyenangkan, baik di rumah maupun di perjalanan.",
+    "price": 4999000,
+    "stock": 20,
+    "imgUrl": "https://p-id.ipricegroup.com/media/Maria/Nintendo_Switch_OLED_White.jpg",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Monopoly Board Game",
+    "description": "Masuki dunia keuangan dan properti dengan Monopoly Board Game, permainan klasik yang menguji strategi dan kecerdasan Anda dalam berinvestasi dan negosiasi. Dengan aturan yang mudah dipahami namun memerlukan taktik yang cerdas, Monopoly telah menjadi favorit keluarga dan teman selama beberapa generasi.",
+    "price": 200000,
+    "stock": 200,
+    "imgUrl": "https://www.bigw.com.au/medias/sys_master/images/images/h59/hb8/31951845097502.jpg",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Bandai Gundam 00 XN Raiser Model Kit",
+    "description": "Rakit dan koleksi Model Kit Gundam, replika ikonik dari serial anime Gundam yang terkenal di seluruh dunia. Model kit ini menawarkan pengalaman merakit yang mendetail dan memuaskan, memungkinkan Anda untuk membangun sendiri mecha-mecha tangguh yang menjadi favorit di kalangan penggemar.",
+    "price": 550000,
+    "stock": 100,
+    "imgUrl": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/105/MTA-124659618/bandai_mg_00_gundam_xn_raiser_full03_ht2jnckn.jpg",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Aoshima Toyota AE86 Trueno Initial D Takumi Fujiwara",
+    "description": "Rakit replika mobil legendaris dengan Aoshima Model Kit Toyota AE86, model kit berkualitas tinggi yang menghadirkan detail presisi dari mobil ikonik Toyota AE86. Ideal untuk penggemar otomotif dan hobi model kit, replika ini memungkinkan Anda untuk merakit mobil yang telah menjadi simbol dalam dunia balap dan budaya pop.",
+    "price": 550000,
+    "stock": 100,
+    "imgUrl": "https://images-cdn.ubuy.co.id/636be76b4ca2d03e170bd7e3-aoshima-bunka-124-initial-d-1-fujiwara.jpg",
+    "categoryId": 2,
+    "authorId": 1
+  }
+]

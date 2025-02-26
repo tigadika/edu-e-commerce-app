@@ -1,5 +1,5 @@
 import { ArrowDown } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CardItem from "../../components/user/CardItem";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsThunk } from "../../store/appSlice";
@@ -8,9 +8,23 @@ export default function HomePage() {
   const { products } = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
+  const [queries, setQueries] = useState({
+    filterCategory: "",
+    sortPrice: "",
+  });
+
+  const handleChangeQuery = (e) => {
+    const { name, value } = e.target;
+    setQueries({ ...queries, [name]: value });
+  };
+
   useEffect(() => {
-    dispatch(getProductsThunk());
-  }, []);
+    if (queries) {
+      dispatch(getProductsThunk(queries));
+    } else {
+      dispatch(getProductsThunk());
+    }
+  }, [queries]);
 
   return (
     <>
@@ -19,10 +33,11 @@ export default function HomePage() {
         <div className="space-y-4">
           <div className="flex justify-end items-center gap-2">
             <select
-              name="Search"
-              id="Search"
+              name="filterCategory"
+              id="filterCategory"
               defaultValue={""}
               className="px-4 py-2 rounded-md border text-sm"
+              onChange={handleChangeQuery}
             >
               <option value="">Select Category</option>
               <option value="iphone">iPhone</option>
@@ -37,16 +52,19 @@ export default function HomePage() {
             <button className="px-4 py-2 text-sm rounded-md border">
               &gt;
             </button>
-            <button
-              name="sort-price"
-              id="sort-price"
-              className="flex items-center justify-center gap-1 px-4 py-2 rounded-md border text-sm"
+            <select
+              name="sortPrice"
+              id="sortPrice"
+              defaultValue={""}
+              className="px-4 py-2 rounded-md border text-sm"
+              onChange={handleChangeQuery}
             >
-              Price
-              <ArrowDown size={12} />
-            </button>
+              <option value="">Sort Price</option>
+              <option value="asc">Harga terendah</option>
+              <option value="desc">Harga tertinggi</option>
+            </select>
           </div>
-          <div className="grid grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
             {products &&
               products.map((product) => (
                 <CardItem key={product.id} product={product} />

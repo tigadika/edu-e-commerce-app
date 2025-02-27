@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import {
   addDoc,
   collection,
@@ -6,8 +6,10 @@ import {
   doc,
   getDoc,
   getDocs,
+  limit,
   orderBy,
   query,
+  startAfter,
   updateDoc,
   where,
 } from "firebase/firestore";
@@ -25,6 +27,7 @@ export const appSlice = createSlice({
     isLoading: true,
     error: "",
     loginUserRole: "",
+    totalProducts: 0,
   },
   reducers: {
     increment: (state) => {
@@ -54,6 +57,9 @@ export const appSlice = createSlice({
     onFetchUserRoleSuccess: (state, action) => {
       state.loginUserRole = action.payload;
     },
+    changeTotalProducts: (state, action) => {
+      state.totalProducts = action.payload;
+    },
   },
 });
 
@@ -68,6 +74,7 @@ export const {
   onError,
   onFetchUserSuccess,
   onFetchUserRoleSuccess,
+  changeTotalProducts,
 } = appSlice.actions;
 
 export const getUserProfileThunk = () => async (dispatch) => {
@@ -106,9 +113,26 @@ export const getProductsThunk = (params) => async (dispatch) => {
       q = query(q, orderBy("price", params.sortPrice));
     }
 
-    const querySnapshot = await getDocs(q);
+    // check total diawal dan ketika di filter
+    const querySnapshotSize = (await getDocs(q)).size;
+    dispatch(changeTotalProducts(querySnapshotSize));
 
+    q = query(q, limit(params.pageSize));
+
+    if (params.pageNumber > 1) {
+      const prevPageSnapshot = await getDocs(
+        query(q, limit((params.pageNumber - 1) * params.pageSize))
+      );
+
+      const lastVisible =
+        prevPageSnapshot.docs[prevPageSnapshot.docs.length - 1];
+
+      q = query(q, startAfter(lastVisible), limit(params.pageSize));
+    }
+
+    const querySnapshot = await getDocs(q);
     let data = [];
+
     querySnapshot.forEach((doc) => {
       data.push({ id: doc.id, ...doc.data() });
     });

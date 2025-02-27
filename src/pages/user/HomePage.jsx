@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsThunk } from "../../store/appSlice";
 
 export default function HomePage() {
-  const { products } = useSelector((state) => state.app);
+  const { products, totalProducts } = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
   const [queries, setQueries] = useState({
     filterCategory: "",
     sortPrice: "",
+    pageSize: 10,
+    pageNumber: 1,
   });
 
   const handleChangeQuery = (e) => {
@@ -45,11 +47,37 @@ export default function HomePage() {
               <option value="mac">Mac</option>
               <option value="airpods">Airpods</option>
             </select>
-            <button className="px-4 py-2 text-sm rounded-md border">
+            <button
+              onClick={() => {
+                if (queries.pageNumber > 1) {
+                  setQueries({
+                    ...queries,
+                    pageNumber: queries.pageNumber - 1,
+                  });
+                }
+              }}
+              className="px-4 py-2 text-sm rounded-md border"
+            >
               &lt;
             </button>
-            <p className="text-gray-400 text-sm italic">Page: 1</p>
-            <button className="px-4 py-2 text-sm rounded-md border">
+            <p className="text-gray-400 text-sm italic">
+              Page: {queries.pageNumber} of{" "}
+              {Math.ceil(totalProducts / queries.pageSize)}
+            </p>
+            <button
+              onClick={() => {
+                if (
+                  queries.pageNumber <
+                  Math.ceil(totalProducts / queries.pageSize)
+                ) {
+                  setQueries({
+                    ...queries,
+                    pageNumber: queries.pageNumber + 1,
+                  });
+                }
+              }}
+              className="px-4 py-2 text-sm rounded-md border"
+            >
               &gt;
             </button>
             <select

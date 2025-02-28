@@ -12,6 +12,8 @@ import store from "./store/index.js";
 import Auth from "./pages/Auth.jsx";
 import Login from "./pages/user/Login.jsx";
 import Register from "./pages/user/Register.jsx";
+import { ToastContainer } from "react-toastify";
+import CartPage from "./pages/user/CartPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
             path: "register",
             element: <Register />,
           },
+          {
+            path: "cart",
+            element: <CartPage />,
+          },
         ],
       },
     ],
@@ -61,6 +67,7 @@ createRoot(document.getElementById("root")).render(
   // <StrictMode>
   <Provider store={store}>
     <RouterProvider router={router} />
+    <ToastContainer />
   </Provider>
   // </StrictMode>
 );

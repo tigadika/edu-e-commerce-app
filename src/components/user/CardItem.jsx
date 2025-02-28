@@ -1,4 +1,22 @@
+import { addDoc, collection, doc } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { db } from "../../config/firebase";
+import { toast } from "react-toastify";
+
 export default function CardItem({ product }) {
+  const { loginUser } = useSelector((state) => state.app);
+
+  const handleAddToCart = async () => {
+    try {
+      const input = { ...product, userId: loginUser.uid, quantity: 1 };
+      delete input.id;
+      await addDoc(collection(db, "carts"), input);
+      toast.success("berhasil menambahkan ke keranjang");
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
   return (
     <div className="bg-white rounded-md border border-gray-300 w-full cursor-pointer overflow-hidden">
       <img
@@ -12,7 +30,10 @@ export default function CardItem({ product }) {
           <p className="tracking-tight text-xl font-semibold">
             Rp {product.price}
           </p>
-          <button className="w-full px-4 py-2 rounded-md bg-black text-white">
+          <button
+            onClick={handleAddToCart}
+            className="w-full px-4 py-2 rounded-md bg-black text-white cursor-pointer"
+          >
             Add to cart
           </button>
         </div>

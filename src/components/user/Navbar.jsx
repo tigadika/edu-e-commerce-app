@@ -55,9 +55,9 @@ export default function Navbar() {
         <div className="flex items-center gap-5">
           {!isLoading && loginUser?.email && (
             <>
-              <button className="cursor-pointer">
+              <LinkRouter to={"/cart"} className="cursor-pointer">
                 <ShoppingCart />
-              </button>
+              </LinkRouter>
               <p>Hi, {loginUser?.email}!</p>
               <button
                 onClick={handleLogout}

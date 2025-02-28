@@ -87,7 +87,7 @@ export const getUserProfileThunk = () => async (dispatch) => {
         const role = await getDoc(doc(db, "users", user.uid));
 
         dispatch(onFetchUserRoleSuccess(role.data().role));
-        dispatch(onFetchUserSuccess({ email: user.email }));
+        dispatch(onFetchUserSuccess({ email: user.email, uid: user.uid }));
       } else {
         dispatch(onFetchUserSuccess(null));
       }
